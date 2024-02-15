@@ -199,7 +199,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.picoxr": {
-      "version": "file:C:/Users/elliot.coffell/Downloads/PICO SDK 230",
+      "version": "file:../PICO SDK 230",
       "depth": 0,
       "source": "local",
       "dependencies": {
