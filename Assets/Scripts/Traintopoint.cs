@@ -47,10 +47,24 @@ public class Traintopoint : MonoBehaviour
                 }
 
             }
-            if (distance <= 5)
+            
+            if (distance <= 20)
             {
-                speed -= 0.2f;
+                speed -= 0.1f;
+                if (speed <= 0)
+                {
+                    speed = 0;
+                }
             }
+            if (distance >= 0)
+            {
+                speed += 0.1f;
+                if (speed >= 20)
+                {
+                    speed = 20;
+                }
+            }
+            
 
 
         }
@@ -77,4 +91,7 @@ public class Traintopoint : MonoBehaviour
 
 
     }
+  
+  
+    
 }
