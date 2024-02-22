@@ -8,6 +8,7 @@ public class Move : MonoBehaviour
 
     public float speed = 12f;
     public float gravity = -18.81f;
+    LookAtPlayer Lookat;
 
     //public Transform GroundCheck;
     //public float groundDistance = 0.4f;
@@ -15,6 +16,10 @@ public class Move : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
+    private void Start()
+    {
+        Lookat = FindObjectOfType<LookAtPlayer>();
+    }
 
     private void Update()
     {
@@ -46,6 +51,13 @@ public class Move : MonoBehaviour
 
 
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "gamestart")
+        {
+            LookAtPlayer.gamestarted = true;
+        }
     }
 
 }
