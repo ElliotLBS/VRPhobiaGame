@@ -43,11 +43,16 @@ public class DoorScript2 : MonoBehaviour
             float distance = Vector3.Distance(transform.position, destination);
             if (distance <= 0.05)
             {
+                if (index == 0)
+                {
+                    ready = false;
+                }
                 if (index < doortopoint.Count - 1)
                 {
                     index++;
                 }
             }
+
         }
         if (doorIndexs.Contains(index))
         {
@@ -58,12 +63,13 @@ public class DoorScript2 : MonoBehaviour
                 if (index >= doortopoint.Count)
                 {
                     index = 0;
+
                 }
-                ready = true;
+                //ready = false;
                 doorwaiter = 0;
             }
         }
-
+    
     }
 
 }
