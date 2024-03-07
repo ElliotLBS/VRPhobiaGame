@@ -7,6 +7,9 @@ public class PlayerInside : MonoBehaviour
     [SerializeField] Traintopoint traintopoint;
     [SerializeField] public float playerwaiter = 0.0f;
     private float playerwait = 15.0f;
+
+    [SerializeField] public GameObject Player;
+    [SerializeField] public GameObject Train;
     private void Start()
     {
         traintopoint = FindObjectOfType<Traintopoint>();
@@ -16,6 +19,8 @@ public class PlayerInside : MonoBehaviour
     {
        if(inside)
         {
+            Player.transform.SetParent( Train.transform,true);
+           
             playerwaiter += Time.deltaTime;
             if (playerwaiter >= playerwait)
             {
