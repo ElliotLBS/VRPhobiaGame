@@ -926,6 +926,7 @@ MonoBehaviour:
   isLoop: 1
   ready: 0
   doorwaiter: 0
+  traintopoint: {fileID: 0}
 --- !u!1 &549896415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,7 +1156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 555606861}
-  m_MoveSpeed: 10
+  m_MoveSpeed: 5
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 1
@@ -1466,6 +1467,7 @@ MonoBehaviour:
   isLoop: 1
   ready: 0
   doorwaiter: 0
+  traintopoint: {fileID: 0}
 --- !u!65 &669791450
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3412,6 +3414,7 @@ MonoBehaviour:
   isLoop: 1
   ready: 0
   doorwaiter: 0
+  traintopoint: {fileID: 0}
 --- !u!65 &1195342883
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4885,6 +4888,7 @@ MonoBehaviour:
   isLoop: 1
   ready: 0
   doorwaiter: 0
+  traintopoint: {fileID: 0}
 --- !u!1 &1611391488
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class DoorScript : MonoBehaviour
     private void Start()
     {
         startPos = transform.position;
+
     }
     void OnCollisionEnter(Collision collision)
     {

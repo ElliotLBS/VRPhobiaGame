@@ -13,9 +13,9 @@ public class Traintopoint : MonoBehaviour
     public bool ready;
 
 
-    private float waitTime = 5.0f;
+    public float waitTime = 10.0f;
     [SerializeField]
-    private float waiter = 0.0f;
+    public  float waiter = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
