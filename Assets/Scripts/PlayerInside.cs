@@ -22,7 +22,7 @@ public class PlayerInside : MonoBehaviour
     {
        if(inside)
         {
-            doorscript2.index = 0;
+   
             Player.transform.SetParent( Train.transform,true);
            
             playerwaiter += Time.deltaTime;
