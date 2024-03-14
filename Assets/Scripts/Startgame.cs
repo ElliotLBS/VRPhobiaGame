@@ -49,7 +49,7 @@ public class Startgame : MonoBehaviour
         {
             print("ånej");  
             StartCoroutine(FadeOut(CROWD1, 1f));
-            
+            FFFF.Play();
 
         }
 
