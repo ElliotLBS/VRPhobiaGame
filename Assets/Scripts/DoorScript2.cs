@@ -7,21 +7,29 @@ public class DoorScript2 : MonoBehaviour
     public List<GameObject> doortopoint;
     public List<int> doorIndexs;
     public float speed;
-   [SerializeField] public int index = 0;
+    [SerializeField] public int index = 0;
     public bool isLoop = true;
     public bool ready;
 
+     public enum States { None, Open, Close }
+    public States current = States.None;
+
 
     private float doorwaitTime = 8.0f;
-    [SerializeField]
     private float doorwaiter = 0.0f;
-    private bool closeddoor;
+    [SerializeField]
+    private float OpenDoor = 0.0f;
+    private float Waitfordoor = 15.0f;
+    [SerializeField]
+    private float CloseDoor = 0.0f;
+    private float closewaitdoor = 2.0f;
+
     [SerializeField] Traintopoint traintopoint;
     // Start is called before the first frame update
     void Start()
     {
-            traintopoint = FindObjectOfType<Traintopoint>();
-        
+        traintopoint = FindObjectOfType<Traintopoint>();
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -30,33 +38,70 @@ public class DoorScript2 : MonoBehaviour
         if (collision.gameObject.name == "Left Controller" || collision.gameObject.name == "Right Controller" || collision.gameObject.name == "Test")
         {
             Debug.Log("HitDoor");
-            ready = true;
-            index++;
+            current = States.Open;
         }
 
     }
 
     private void Update()
     {
+        switch (current)
+        {
+            case States.None:
+                ready = false;
+                print("Doing nothing");
+                break;
 
-        if (traintopoint.ready == false && traintopoint.waiter < traintopoint.waitTime)
-       {
-            ready = true;
+            case States.Open:
+                //Open kod här
+                OpenDoor += Time.deltaTime;
+                if (OpenDoor > Waitfordoor)
+                {
+                    OpenDoor = 0;
+                    current = States.Close;
+                }
+                ready = true;
+             /*
+                if (doorIndexs.Contains(index))
+                {
+                    doorwaiter += Time.deltaTime;
+                    if (doorwaiter >= doorwaitTime)
+                    {
+                       
+                    }
+                }
+             */
+                break;
+
+            case States.Close:
+                ready = true;
+                index++;
+                CloseDoor += Time.deltaTime;
+                if (CloseDoor >= closewaitdoor)
+                {
+                    CloseDoor = 0;
+                    current = States.None;
+                }
+                OpenDoor = 0;
+                doorwaiter = 0;
+                index = 0;
+
+                /*   if(index == 0)
+                   {
+                       current = States.None;
+                   }'/
+
+                   /* if (index >= doortopoint.Count)
+                    {
+                        index = 0;
+                        current = States.None;
+
+                    }*/
+                //ready = false;
+                break;
+            default:
+                break;
         }
-        else
-        {
-            ready = false;
-         
-        }
-        if (index == 0 && closeddoor == true)
-        {
-            ready = false;
-        }
-       if(index == 0)
-       {
-            closeddoor = true;
-        }
-    
         if (ready == true)
         {
             Vector3 destination = doortopoint[index].transform.position;
@@ -75,26 +120,31 @@ public class DoorScript2 : MonoBehaviour
                     index++;
                 }
             }
-        
+
         }
-        if (doorIndexs.Contains(index))
-        {
-            doorwaiter += Time.deltaTime;
-            if (doorwaiter >= doorwaitTime)
-            {
-                ready = false;
-                index++;
-                if (index >= doortopoint.Count)
-                {
-                    index = 0;
 
 
-                }
-                //ready = false;
-                doorwaiter = 0;
-            }
-        }
-    
     }
 
-}
+
+
+
+    /*
+        if (traintopoint.ready == false && traintopoint.waiter < traintopoint.waitTime)
+        {
+            ready = true;
+        }
+        else
+        {
+            ready = false;
+        }
+ */
+
+    
+      
+       
+    
+ }
+
+
+        

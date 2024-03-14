@@ -11,7 +11,7 @@ public class Traintopoint : MonoBehaviour
     int index = 0;
     public bool isLoop = true;
     public bool ready;
-
+    [SerializeField] DoorScript2 doorscript2;
 
     public float waitTime = 10.0f;
     [SerializeField]
@@ -19,13 +19,19 @@ public class Traintopoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        doorscript2 = FindObjectOfType<DoorScript2>();
     }
 
     private void Update()
     {
-        if (ready == true)
+
+
+        if (ready == true && doorscript2.current == DoorScript2.States.None)
         {
+            if (ready == true)
+            {
+                doorscript2.current = DoorScript2.States.None;
+            }
             Vector3 destination = traintopoint[index].transform.position;
             Vector3 newPos = Vector3.MoveTowards(transform.position, traintopoint[index].transform.position, speed * Time.deltaTime);
             transform.position = newPos;
