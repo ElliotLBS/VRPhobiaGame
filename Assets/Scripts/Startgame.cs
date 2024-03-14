@@ -53,7 +53,7 @@ public class Startgame : MonoBehaviour
             }
         }
     }
-    void startgamenow()
+    public void startgamenow()
     {
         XRRIG.transform.position = new Vector3(2, 0, 45);
         onStair1 = true;

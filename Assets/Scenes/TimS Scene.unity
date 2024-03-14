@@ -13470,6 +13470,7 @@ MonoBehaviour:
   endPoint2: {fileID: 929747281}
   stairRatio1: 0
   stairRatio2: 0
+  STARTGAMETEXT: {fileID: 1627717251}
 --- !u!1 &1629434134
 GameObject:
   m_ObjectHideFlags: 0
