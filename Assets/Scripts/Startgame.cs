@@ -16,6 +16,9 @@ public class Startgame : MonoBehaviour
     public float stairRatio1 = 0;
     public float stairRatio2 = 0;
     public TMP_Text STARTGAMETEXT;
+    public AudioSource CROWD1;
+    public bool CROWDREALIZE;
+    public AudioSource FFFF;
 
     ContinuousMoveProviderBase moveProvider;
     void Start()
@@ -23,10 +26,34 @@ public class Startgame : MonoBehaviour
         moveProvider = FindObjectOfType<ContinuousMoveProviderBase>();
     }
 
+    public static IEnumerator FadeOut(AudioSource CROWD1_SOUND, float FadeTime = 0.2f)
+    {
+        float startVolume = CROWD1_SOUND.volume;
+
+        while (CROWD1_SOUND.volume > 0)
+        {
+            CROWD1_SOUND.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        CROWD1_SOUND.Stop();
+        CROWD1_SOUND.volume = startVolume;
+    }
+
+
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha8))
+        if (CROWDREALIZE == true)
+        {
+            print("ånej");  
+            StartCoroutine(FadeOut(CROWD1, 1f));
+            
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             startgamenow();
         }
@@ -48,7 +75,10 @@ public class Startgame : MonoBehaviour
             stairRatio2 += 0.3f * Time.deltaTime;
             if (stairRatio2 > 1)
             {
+                CROWDREALIZE = true;
+
                 onStair2 = false;
+
                 moveProvider.moveSpeed = 10;
             }
         }
@@ -60,5 +90,6 @@ public class Startgame : MonoBehaviour
         STARTGAMETEXT.enabled = false;
         moveProvider.moveSpeed = 0;
     }
+    
 }
 
