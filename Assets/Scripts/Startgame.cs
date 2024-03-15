@@ -60,7 +60,7 @@ public class Startgame : MonoBehaviour
         if (onStair1)
         {
             XRRIG.transform.position = Vector3.Lerp(startpoint.position, endPoint1.position, stairRatio1) ;
-            stairRatio1 += 0.3f * Time.deltaTime;
+            stairRatio1 += 0.2f * Time.deltaTime;
             if (stairRatio1 > 1)
             {
 
@@ -72,7 +72,7 @@ public class Startgame : MonoBehaviour
         if(onStair2)
         {
             XRRIG.transform.position = Vector3.Lerp(endPoint1.position, endPoint2.position, stairRatio2);
-            stairRatio2 += 0.3f * Time.deltaTime;
+            stairRatio2 += 0.2f * Time.deltaTime;
             if (stairRatio2 > 1)
             {
                 CROWDREALIZE = true;
