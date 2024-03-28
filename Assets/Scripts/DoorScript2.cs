@@ -22,7 +22,7 @@ public class DoorScript2 : MonoBehaviour
     private float Waitfordoor = 15.0f;
     [SerializeField]
     private float CloseDoor = 0.0f;
-    private float closewaitdoor = 2.0f;
+    private float closewaitdoor = 15.0f;
 
     [SerializeField] Traintopoint traintopoint;
     // Start is called before the first frame update
@@ -55,6 +55,7 @@ public class DoorScript2 : MonoBehaviour
             case States.Open:
                 //Open kod här
                 OpenDoor += Time.deltaTime;
+                index = 1;
                 if (OpenDoor > Waitfordoor)
                 {
                     OpenDoor = 0;
@@ -75,7 +76,7 @@ public class DoorScript2 : MonoBehaviour
 
             case States.Close:
                 ready = true;
-                index++;
+                //index++;
                 CloseDoor += Time.deltaTime;
                 if (CloseDoor >= closewaitdoor)
                 {
@@ -113,11 +114,11 @@ public class DoorScript2 : MonoBehaviour
             {
                 if (index == 0)
                 {
-                    ready = false;
+                //    current = States.None;
                 }
-                if (index < doortopoint.Count - 1)
+                if (index == 1)
                 {
-                    index++;
+                //    current = States.Close;
                 }
             }
 

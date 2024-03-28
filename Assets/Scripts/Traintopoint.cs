@@ -12,6 +12,7 @@ public class Traintopoint : MonoBehaviour
     public bool isLoop = true;
     public bool ready;
     [SerializeField] DoorScript2 doorscript2;
+    [SerializeField] PlayerInside playerinside;
 
     public float waitTime = 10.0f;
     [SerializeField]
@@ -20,11 +21,15 @@ public class Traintopoint : MonoBehaviour
     void Start()
     {
         doorscript2 = FindObjectOfType<DoorScript2>();
+        playerinside = FindObjectOfType<PlayerInside>();
     }
 
     private void Update()
     {
-
+        if(playerinside.outside == true)
+        {
+            ready = false;
+        }
 
         if (ready == true && doorscript2.current == DoorScript2.States.None)
         {
