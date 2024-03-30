@@ -7,7 +7,7 @@ public class PlayerInside : MonoBehaviour
     [SerializeField] Traintopoint traintopoint;
     [SerializeField] DoorScript2 doorscript2;
     [SerializeField] public float playerwaiter = 0.0f;
-    private float playerwait = 15.0f;
+    private float playerwait = 20.0f;
 
     [SerializeField] public GameObject Player;
     [SerializeField] public GameObject Train;
@@ -34,13 +34,14 @@ public class PlayerInside : MonoBehaviour
             if (playerwaiter >= playerwait)
             {
                 traintopoint.ready = true;
+                playerwaiter = 0.0f;
             }
         }
       if(outside)
         {
-     
-                Player.transform.SetParent(null, true);
-            
+            playerwaiter = 0.0f;
+            traintopoint.waiter = 0.0f;
+            Player.transform.SetParent(null, true);
         }
 
   

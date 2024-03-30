@@ -14,7 +14,7 @@ public class Traintopoint : MonoBehaviour
     [SerializeField] DoorScript2 doorscript2;
     [SerializeField] PlayerInside playerinside;
 
-    public float waitTime = 10.0f;
+    public float waitTime;
     [SerializeField]
     public  float waiter = 0.0f;
     // Start is called before the first frame update
@@ -29,6 +29,7 @@ public class Traintopoint : MonoBehaviour
         if(playerinside.outside == true)
         {
             ready = false;
+            waiter = 0.0f;
         }
 
         if (ready == true && doorscript2.current == DoorScript2.States.None)
@@ -83,18 +84,25 @@ public class Traintopoint : MonoBehaviour
         {
             ready = false;
             speed = 0;
-            waiter += Time.deltaTime;
-            if( waiter >= waitTime)
-            {
-                speed = 20;
-                index++;
-                if (index >= traintopoint.Count)
+       
+                waiter += Time.deltaTime;
+                if (waiter >= waitTime)
                 {
-                    index = 0;
+                    speed = 20;
+                    index++;
+                    if (index >= traintopoint.Count)
+                    {
+                        index = 0;
+                    }
+                    ready = true;
+                    waiter = 0;
                 }
-                ready = true;
-                waiter = 0;
+            
+            if(playerinside.outside == true)
+            {
+                waiter = 0.0f;
             }
+     
 
         }
     
