@@ -8,7 +8,7 @@ public class Traintopoint : MonoBehaviour
     public List<GameObject> traintopoint;
     public List<int> stationIndexs;
     public float speed;
-    int index = 0;
+   public int index = 0;
     public bool isLoop = true;
     public bool ready;
     [SerializeField] DoorScript2 doorscript2;
