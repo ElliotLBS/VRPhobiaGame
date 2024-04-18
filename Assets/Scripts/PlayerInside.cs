@@ -12,6 +12,9 @@ public class PlayerInside : MonoBehaviour
     [SerializeField] public GameObject Player;
     [SerializeField] public GameObject Train;
 
+    [SerializeField] Transform Player1;
+    [SerializeField] Transform Train1;
+
     public bool inside = false;
     public bool outside = false;
 
@@ -27,9 +30,10 @@ public class PlayerInside : MonoBehaviour
         {
           if(Player.transform.parent == null)
             {
-                Player.transform.SetParent(Train.transform, true);
+                //Player1.InverseTransformPoint(Train1.position);
+                // Player.transform.SetParent(Train.transform, true);
             }
-          
+
             playerwaiter += Time.deltaTime;
             if (playerwaiter >= playerwait)
             {
@@ -41,11 +45,14 @@ public class PlayerInside : MonoBehaviour
         {
             playerwaiter = 0.0f;
             traintopoint.waiter = 0.0f;
-            Player.transform.SetParent(null, true);
+           //Player1.InverseTransformPoint(Train1.position);
+            //   Player.transform.SetParent(null, true);
         }
-
   
+
+
     }
+
     void OnTriggerEnter(Collider collision)
     {
 
