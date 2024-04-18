@@ -8,9 +8,11 @@ public class Respawnscript : MonoBehaviour
     Transform destination;
     [SerializeField] public GameObject Train;
     [SerializeField] Traintopoint traintopoint;
+     changeStation changestation;
     void Start()
     {
         traintopoint  = FindObjectOfType<Traintopoint>();
+        changestation = FindAnyObjectByType<changeStation>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -20,7 +22,7 @@ public class Respawnscript : MonoBehaviour
         {
             Train.transform.position = destination.position;
             traintopoint.index++;
-
+            changestation.changeStations();
             print("Hit2");
 
         }
