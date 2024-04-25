@@ -21,6 +21,7 @@ public class Startgame : MonoBehaviour
     public AudioSource FFFF;
     public bool startedgame;
 
+
     XRIDefaultInputActions inputs;
 
     private void OnEnable()
@@ -39,6 +40,7 @@ public class Startgame : MonoBehaviour
     {
         moveProvider = FindObjectOfType<ContinuousMoveProviderBase>();
         moveProvider.moveSpeed = 0;
+
     }
 
     public static IEnumerator FadeOut(AudioSource CROWD1_SOUND, float FadeTime = 0.2f)
@@ -96,7 +98,7 @@ public class Startgame : MonoBehaviour
             if (stairRatio2 > 1)
             {
                 CROWDREALIZE = true;
-                moveProvider.moveSpeed = 50;
+                moveProvider.moveSpeed = 5;
                 onStair2 = false;
                 startedgame = true;
             }

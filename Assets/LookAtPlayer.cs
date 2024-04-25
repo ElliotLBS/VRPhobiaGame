@@ -6,9 +6,11 @@ public class LookAtPlayer : MonoBehaviour
 {
     public GameObject player;
     public static bool gamestarted;
+    Startgame start;
     // Start is called before the first frame update
     void Start()
     {
+        start = FindObjectOfType<Startgame>();
         gamestarted = false;
     }
 
@@ -16,6 +18,11 @@ public class LookAtPlayer : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.L))
+        {
+            
+            gamestarted = true;
+        }
+        if(start.CROWDREALIZE)
         {
             gamestarted = true;
         }

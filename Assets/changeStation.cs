@@ -16,7 +16,7 @@ public class changeStation : MonoBehaviour
     void Start()
     {
         stationInt = 1;
-
+        bebis.SetActive(false);
 }
 
     public void changeStations()
@@ -39,7 +39,7 @@ public class changeStation : MonoBehaviour
             grafittiwall1.SetActive(true);
             people1.SetActive(true);
             signs1.SetActive(true);
-            bebis.SetActive(false);
+
         }
         else if(stationInt == 2)
         {
