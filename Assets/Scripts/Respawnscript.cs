@@ -22,7 +22,7 @@ public class Respawnscript : MonoBehaviour
         {
             Train.transform.position = destination.position;
             traintopoint.index++;
-            changestation.changeStations();
+            changestation.stationInt += 1;
             print("Hit2");
 
         }
