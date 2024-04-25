@@ -19,11 +19,26 @@ public class Startgame : MonoBehaviour
     public AudioSource CROWD1;
     public bool CROWDREALIZE;
     public AudioSource FFFF;
+    public bool startedgame;
+
+    XRIDefaultInputActions inputs;
+
+    private void OnEnable()
+    {
+        inputs = new XRIDefaultInputActions();
+        inputs.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputs.Disable();
+    }
 
     ContinuousMoveProviderBase moveProvider;
     void Start()
     {
         moveProvider = FindObjectOfType<ContinuousMoveProviderBase>();
+        moveProvider.moveSpeed = 0;
     }
 
     public static IEnumerator FadeOut(AudioSource CROWD1_SOUND, float FadeTime = 0.2f)
@@ -45,6 +60,11 @@ public class Startgame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (inputs.XRIRightHandInteraction.Activate.WasPerformedThisFrame())
+        {
+            startgamenow();
+        }
+
         if (CROWDREALIZE == true)
         {
             print("ånej");  
@@ -76,20 +96,23 @@ public class Startgame : MonoBehaviour
             if (stairRatio2 > 1)
             {
                 CROWDREALIZE = true;
-
+                moveProvider.moveSpeed = 50;
                 onStair2 = false;
-
-                moveProvider.moveSpeed = 10;
+                startedgame = true;
             }
         }
     }
+
     public void startgamenow()
     {
-        XRRIG.transform.position = new Vector3(2, 0, 45);
-        onStair1 = true;
-        STARTGAMETEXT.enabled = false;
-        moveProvider.moveSpeed = 0;
+        if(!startedgame)
+        {
+            XRRIG.transform.position = new Vector3(2, 0, 45);
+            onStair1 = true;
+            STARTGAMETEXT.enabled = false;
+            moveProvider.moveSpeed = 0;
+
+        }
     }
-    
 }
 

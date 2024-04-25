@@ -10,6 +10,7 @@ public class changeStation : MonoBehaviour
     public GameObject people2;
     public GameObject signs1;
     public GameObject signs2;
+    public GameObject bebis;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,16 +20,29 @@ public class changeStation : MonoBehaviour
         grafittiwall1.SetActive(true);
         people1.SetActive(true);
         signs1.SetActive(true);
+        bebis.SetActive(false);
 }
 
     public void changeStations()
     {
+        bebis.SetActive(true);
         grafittiwall1.SetActive(false);
         people1.SetActive(false);
         signs1.SetActive(false);
         grafittiwall2.SetActive(true);
         people2.SetActive(true);
         signs2.SetActive(true);
+
+    }
+    public void changeStationsAgain()
+    {
+        grafittiwall2.SetActive(false);
+        people2.SetActive(false);
+        signs2.SetActive(false);
+        grafittiwall1.SetActive(true);
+        people1.SetActive(true);
+        signs1.SetActive(true);
+        bebis.SetActive(false);
 
     }
     private void Update()
